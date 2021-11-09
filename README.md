@@ -20,3 +20,14 @@ As promised, we are going to learn ABAP RAP using a practical approach where you
 1. Creation of a package
 2. Creation of data element
 3. Creation of databse tables 
+
+## Blog 3: A practical guide to ABAP RAP: Part 3
+For this part of the blog series, we are going to discuss about the following:
+1. Creation of CDS interface view
+2. Creation of CDS Projection view
+
+## Blog 4: A practical guide to ABAP RAP: Part 4
+After reading this blog, you will be able to understand and create the following:
+1. Metadata Extension for UI elements
+2. Behavior definition
+3. Behavior projection
