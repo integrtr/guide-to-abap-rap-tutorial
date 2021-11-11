@@ -1,6 +1,6 @@
 ## Scenario
 
-![scenario](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a4ee3ebf-6913-42ad-85a5-ce5f72f7ce68/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211018%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211018T054527Z&X-Amz-Expires=86400&X-Amz-Signature=a4647cc564713271dfd4b9bc28ffb71a78a514b46e19098473c0665904e74c4d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![2 1](https://user-images.githubusercontent.com/82094951/141241872-545a6474-8c35-4a82-829e-7f47aef2c705.jpg)
 
 We have a hiring scenario where the HR has permissions to create an employee if she/he does not exist, or update the details for an employee already in their organization. HR Manager has permissions to set status of hired or updated employee as active or inactive. The latter will also be able to delete and update certain information of employees from records provided by HR.
 Other than create, update and delete operation, we will also implement the following:
@@ -15,27 +15,25 @@ Other than create, update and delete operation, we will also implement the follo
 Let us now begin with the development. For this, first step is to create a package. 
 1. Create a package
 - Open project explorer and right click on 'Favorite Packages'. Select New→ ABAP Package.
-![package](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/73cb665a-4d0e-4547-b467-4ab63c7293e1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T102517Z&X-Amz-Expires=86400&X-Amz-Signature=aadde76175ccb9a9a0c3b49677c5191a94b060cea742f14f12498de07849825e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
-
+![2 2](https://user-images.githubusercontent.com/82094951/141242079-155c7779-940a-49e5-bcfa-d139f0a9439e.jpg)
 - Provide Name and Description for it and mark 'Add to favorite packages'. This will keep your package on top where you can access it easily.
 
-![package-name](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/10452796-922d-4cc3-ba3d-13413db15be3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T102653Z&X-Amz-Expires=86400&X-Amz-Signature=2f9cde22b87d5941f8d6d6adc68a5b1164b70219e99a33f2af86ecad11855df1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![2 3](https://user-images.githubusercontent.com/82094951/141242158-9640dc8f-6efb-48df-a300-e8a9ac259481.jpg)
 
 - Click Next and give 'Software Component'. Go to the next step and create or select a transport request for the package and click on Finish. Your package will be created.
-![TR](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b34370e6-d7f0-4f9e-b85f-1a4c8e409429/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T102750Z&X-Amz-Expires=86400&X-Amz-Signature=ba10156aa79e128b99de0a77892083610f0e6b86142e1615f1420af6176d9a61&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
-
+![2 4](https://user-images.githubusercontent.com/82094951/141242250-f95046ae-7628-4d19-a78d-4d554e6ee0db.jpg)
 
 2. We will now create data element and database tables.
 
 ### Data element
 To create the data element, right click on the package created and click on New→ Other ABAP Repository Object→ Data Element.
-![create-table](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b0959e5f-2566-4954-8e3e-66837b4eacb9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T103313Z&X-Amz-Expires=86400&X-Amz-Signature=ce25f1b546f061be026211462a39d911703fec935113b421bf3e885d3273637b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![2 5](https://user-images.githubusercontent.com/82094951/141242370-5ed860d6-049f-418e-94dc-8506932f57f9.jpg)
 
 Provide name to it, ZRAP_E2E_ID and give a suitable description
-![data-element](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/99c6f4c8-c982-4173-9530-d594bd95e128/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211019%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211019T062211Z&X-Amz-Expires=86400&X-Amz-Signature=f42c222d9d3a2638683a2ef47b3b40b56ebb304564553b79ca1744f7a05f73e1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![2 6](https://user-images.githubusercontent.com/82094951/141242520-32a75d51-a061-429a-9317-c9dc864e84cc.jpg)
 
-Click on next and provide Transport Request to it and then click on finish. You will get a screen for providing data type information as shown below
-![element-info](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e47acbc5-802b-4593-98d9-eadfbb84e052/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211019%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211019T062834Z&X-Amz-Expires=86400&X-Amz-Signature=414346d5b879d5de9c44e2ef4fccee71eb2121c1ec851cb015655f08013a9074&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+Click on next and provide Transport Request to it and then click on finish. You will get a screen for providing data type information as shown below.
+![2 7](https://user-images.githubusercontent.com/82094951/141242602-0860e2f1-5a25-42fb-b30c-a2178051c8b1.jpg)
 
 Save and Activate.
 
@@ -43,45 +41,39 @@ Save and Activate.
 
 This table will store details about an employee like employee ID, first and last name, date of birth, etc. 
 1. To create this table, right click on the package created and click on New→ Other ABAP Repository Object→ Database Table.
-![create-table](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b0959e5f-2566-4954-8e3e-66837b4eacb9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T103313Z&X-Amz-Expires=86400&X-Amz-Signature=ce25f1b546f061be026211462a39d911703fec935113b421bf3e885d3273637b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![2 8](https://user-images.githubusercontent.com/82094951/141242665-ececd60c-e95b-4c4a-8b08-ae3b10ee3114.jpg)
 
 2. Provide a name to it, ZRAP_E2E_AEMP and give suitable description. 
-![table-name](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b5f92640-4584-4901-a687-dec4e6539ae7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T103526Z&X-Amz-Expires=86400&X-Amz-Signature=a4ebc0fc76bf134b41184b2db684ae94bc206cb59dfbf4fccedfd9213f12adbc&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![2 9](https://user-images.githubusercontent.com/82094951/141242684-431da2b7-1a91-42d1-a19d-5a882490a6c6.jpg)
 
 3. Click on Next and provide Transport Request to it and then click on Finish. You will get a predefined outline of code where you can enter the below code.
- 
-![table-fields](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cbf87c97-75ec-48e1-8343-b6a0edb55dd7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T103322Z&X-Amz-Expires=86400&X-Amz-Signature=a72149cab2ef8baa42f97b6e345c1c4c238bc2af65b5daee6f59d3429b93d7f1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
+![2 10](https://user-images.githubusercontent.com/82094951/141242718-6072e6d3-8f62-424e-b42a-57ae01acb179.jpg)
 
 **Employment Information Table**
-This table will store details about employees emplyment information like salary, joining date, employment ID and so on.
+This table will store details about employees employment information like salary, joining date, employment ID and so on.
 1. To create this table, right click on the package created and click on New→ Other ABAP Repository Object→ Database Table.
+![2 5](https://user-images.githubusercontent.com/82094951/141243106-5ace046c-3cd9-46f7-a951-0998b1e7d02f.jpg)
 
-![create-table](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b0959e5f-2566-4954-8e3e-66837b4eacb9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T103313Z&X-Amz-Expires=86400&X-Amz-Signature=ce25f1b546f061be026211462a39d911703fec935113b421bf3e885d3273637b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 2. Provide a name to it, ZRAP_E2E_AEMPL and give suitable description.
-
-![table-name2](https://user-images.githubusercontent.com/82094951/137674359-41161d4a-05bf-4606-a442-ec9e16023078.png)
-
+![2 13 1](https://user-images.githubusercontent.com/82094951/141244431-7d5f5244-f60c-4288-bf54-9fd143e1a840.jpg)
 
 3. Click on Next and provide Transport Request to it and then click on Finish. You will get a predefined outline of code where you can enter the below code.
 
-![table-fields](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b7735a65-3162-4ff1-9d83-29d873ec5c6e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T104423Z&X-Amz-Expires=86400&X-Amz-Signature=001c9af15168606b882dba072c789d635898773d803f367fef9c9d03784655ef&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
-
+![2 11](https://user-images.githubusercontent.com/82094951/141243832-21387ea7-5ded-4d1e-a2d3-97e5d8058f8d.jpg)
 
 **Position Information Table**
 This table will act as value help for other two tables created and will contain fields like Position ID, Salary, etc.
 1. To create this table, right click on the package created and click on New→ Other ABAP Repository Object→ Database Table.
-
-![create-table](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b0959e5f-2566-4954-8e3e-66837b4eacb9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T103313Z&X-Amz-Expires=86400&X-Amz-Signature=ce25f1b546f061be026211462a39d911703fec935113b421bf3e885d3273637b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![2 5](https://user-images.githubusercontent.com/82094951/141243887-215b3285-f05d-4592-bb6b-7348666c4e3a.jpg)
 
 2. Provide a name to it, ZRAP_E2E_APOS and give suitable description.
-
-![table-name3](https://user-images.githubusercontent.com/82094951/137674647-59ec37eb-c9b6-45c1-b040-f6f3bc304a75.png)
+![2 14 1](https://user-images.githubusercontent.com/82094951/141244523-d5e515b5-bb98-4ab5-a3af-cd10146b0a39.jpg)
 
 3. Click on Next and provide Transport Request to it and then click on Finish. You will get a predefined outline of code where you can enter the below code. 
 
-![table-fields](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9768851b-e53b-4224-9f7a-3aa4307c07ad/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211014%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211014T104638Z&X-Amz-Expires=86400&X-Amz-Signature=d2967823045cb8d22b68dfc5639f68fb78c734c8b097603c3f929a48752064f0&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![2 12](https://user-images.githubusercontent.com/82094951/141244136-91cf0adb-f801-47b6-bc51-9c5b670eec94.jpg)
 
 
 Here we are, at the end of first two steps in the making of a hire-to-retire scenario.
