@@ -31,3 +31,10 @@ After reading this blog, you will be able to understand and create the following
 1. Metadata Extension for UI elements
 2. Behavior definition
 3. Behavior projection
+
+## Blog 5: A practical guide to ABAP RAP: Part 5
+In this last part of the blog series, we will discuss the following:
+1. Behavior implementation for writing business logic
+2. Creation of Binding definition
+3. Creation of Service Binding
+4. Publishing the Web Service
