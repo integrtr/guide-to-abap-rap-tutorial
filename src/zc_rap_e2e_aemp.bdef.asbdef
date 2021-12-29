@@ -1,0 +1,21 @@
+projection;
+//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZC_RAP_E2E_AEMP alias Employee
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Employment { create; }
+}
+
+define behavior for ZC_RAP_E2E_AEMPL alias Employment
+use etag
+{
+  use update;
+  use delete;
+
+  use association _Employee;
+}

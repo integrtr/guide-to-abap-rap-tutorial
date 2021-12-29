@@ -1,0 +1,35 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Employment',
+                typeNamePlural: 'Employments',
+                title: { type: #STANDARD, label: 'Employment', value: 'EmploymentUUID' } } }
+
+annotate view ZC_RAP_E2E_AEMPL with
+{
+  @UI.facet: [{ id:              'Employment',
+                 purpose:         #STANDARD,
+                 type:            #IDENTIFICATION_REFERENCE,
+                 label:           'Employment Info',
+                 position:        10 } ]
+
+  @UI:{ identification: [{ position: 1, label: 'EmploymentUUID' }] }
+  EmploymentUUID;
+  @UI.hidden: true
+  EmployeeUUID;
+  @UI: {  lineItem:       [ { position: 20 }  ],
+          identification: [ { position: 20 } ] }
+  PositionId;
+  @UI: {  lineItem:       [ { position: 30 } ],
+          identification: [ { position: 30 } ]}
+  EmployeePosition;
+
+  @UI: {  lineItem:       [ { position: 40 } ],
+          identification: [ { position: 40 } ]}
+
+  DateOfJoining;
+  @UI: {  lineItem:       [ { position: 50 } ],
+          identification: [ { position: 50 } ] }
+  salary;
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

@@ -1,0 +1,63 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Employee',
+                typeNamePlural: 'Employees',
+                title: { type: #STANDARD, label: 'Employee', value: 'EmployeeID' } },
+  presentationVariant: [{ sortOrder: [{ by: 'EmployeeID', direction:  #DESC }] }] }
+
+annotate view ZC_RAP_E2E_AEMP_M with
+{
+  @UI.facet: [ { id:              'EmployeeAction',
+                 purpose:         #STANDARD,
+                 type:            #IDENTIFICATION_REFERENCE,
+                 label:           'Employee Info',
+                 position:        10 }
+                 ,{ id:              'EmploymentAction',
+                 purpose:         #STANDARD,
+                 type:            #LINEITEM_REFERENCE,
+                 label:           'Employment Info',
+                 position:        20,
+                 targetElement:   '_Employment'}
+             ]
+
+  @UI:{ identification: [{ position: 1, label: 'EmployeeUUID' }] }
+  EmployeeUUID;
+
+  @UI: {  lineItem:       [ { position: 10 }  ],
+          identification: [ { position: 10 } ],
+          selectionField: [ { position: 10 } ] }
+  EmployeeID;
+  @UI: {  lineItem:       [ { position: 20 }  ],
+         identification: [ { position: 20 } ],
+         selectionField: [ { position: 20 } ] }
+  FirstName;
+
+  @UI: {  lineItem:       [ { position: 30 } ],
+          identification: [ { position: 30 } ]}
+  LastName;
+
+  @UI: {  lineItem:       [ { position: 40 } ],
+          identification: [ { position: 40 }  ]}
+  DateOfBirth;
+
+  @UI: {
+  lineItem:       [ { position: 50, importance: #HIGH },
+                    { type: #FOR_ACTION, dataAction: 'hireEmployee', label: 'Hire Employee' },
+                    { type: #FOR_ACTION, dataAction: 'retireEmployee', label: 'Retire Employee' }
+                   ],
+   identification: [ { position: 50 },
+                    { type: #FOR_ACTION, dataAction: 'hireEmployee', label: 'Hire Employee' },
+                    { type: #FOR_ACTION, dataAction: 'retireEmployee', label: 'Retire Employee' }] ,
+   textArrangement: #TEXT_ONLY,
+   selectionField: [ { position: 50 } ]
+    }
+
+  Active;
+  @UI: {  lineItem:       [ { position: 60 } ],
+          identification: [ { position: 60 }  ]}
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

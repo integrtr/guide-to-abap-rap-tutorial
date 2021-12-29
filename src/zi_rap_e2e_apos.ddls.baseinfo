@@ -1,0 +1,17 @@
+{
+"BASEINFO":
+{
+"FROM":
+[
+"ZRAP_E2E_APOS"
+],
+"ASSOCIATED":
+[],
+"BASE":
+[],
+"ANNO_REF":
+[],
+"VERSION":0,
+"ANNOREF_EVALUATION_ERROR":""
+}
+}

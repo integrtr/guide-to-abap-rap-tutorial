@@ -1,0 +1,61 @@
+managed implementation in class zbp_i_rap_e2e_aemp unique;
+
+
+define behavior for ZI_RAP_E2E_AEMP alias Employee
+persistent table zrap_e2e_aemp
+lock master
+//authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  association _Employment { create; }
+  create;
+  update;
+  delete;
+  field ( numbering : managed, readonly ) EmployeeUUID;
+  field ( readonly ) active, EmployeeID;
+  field ( mandatory ) firstName, lastName, dateOfBirth;
+  action ( features : instance ) hireEmployee result [1] $self;
+  action ( features : instance ) retireEmployee result [1] $self;
+  mapping for ZRAP_E2E_AEMP
+  {
+    EmployeeUUID = emp_uuid;
+    EmployeeID = empid;
+    FirstName = first_name;
+    LastName = last_name;
+    DateOfBirth = dob;
+    Active = active;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+  validation validateAge on save{ field DateOfBirth; }
+  determination assignIDs on save { create; }
+}
+
+define behavior for ZI_RAP_E2E_AEMPL alias Employment
+persistent table zrap_e2e_aempl
+lock dependent by _Employee
+//authorization dependent by _Employee
+etag master LocalLastChangedAt
+{
+  association _Employee;
+  update;
+  delete;
+  field ( numbering : managed, readonly ) EmploymentUUID;
+  field ( readonly ) EmployeeUUID;
+  field (mandatory) PositionId;
+  //field ( readonly ) EmployeePosition, Salary;
+  mapping for zrap_e2e_aempl
+  {
+    EmploymentUUID = employment_uuid;
+    EmployeeUUID = emp_uuid;
+    PositionId = position_id;
+    EmployeePosition = e_position;
+    ActiveDateOfJoining = active_doj;
+    Salary = salary;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+  determination checkPositionAssigned on modify { create; }
+  determination assignAdditionalInfo on modify { field PositionId; }
+
+
+}

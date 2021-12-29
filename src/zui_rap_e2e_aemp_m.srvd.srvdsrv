@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for ZC_RAP_E2E_AEMP_M'
+define service ZUI_RAP_E2E_AEMP_M {
+  expose ZC_RAP_E2E_AEMP_M as Employee;
+  expose ZC_RAP_E2E_AEMPL_M as Employment;
+}

@@ -1,0 +1,54 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Employee',
+                typeNamePlural: 'Employees',
+                title: { type: #STANDARD, label: 'Employee', value: 'EmployeeID' } },
+  presentationVariant: [{ sortOrder: [{ by: 'EmployeeID', direction:  #DESC }] }] }
+
+annotate view ZC_RAP_E2E_AEMP with
+{
+  @UI.facet: [ { id:              'Employee',
+                 purpose:         #STANDARD,
+                 type:            #IDENTIFICATION_REFERENCE,
+                 label:           'Employee Info',
+                 position:        10 }
+                 ,{ id:              'Employment',
+                 purpose:         #STANDARD,
+                 type:            #LINEITEM_REFERENCE,
+                 label:           'Employment Info',
+                 position:        20,
+                 targetElement:   '_Employment'}
+             ]
+
+  @UI:{ identification: [{ position: 1, label: 'EmployeeUUID' }] }
+  EmployeeUUID;
+
+  @UI: {  lineItem:       [ { position: 10 }  ],
+          identification: [ { position: 10 } ],
+          selectionField: [ { position: 10 } ] }
+  EmployeeID;
+  @UI: {  lineItem:       [ { position: 20 }  ],
+         identification: [ { position: 20 } ],
+         selectionField: [ { position: 20 } ] }
+  FirstName;
+
+  @UI: {  lineItem:       [ { position: 30 } ],
+          identification: [ { position: 30 } ]
+          ,selectionField: [ { position: 30 } ]}
+  LastName;
+
+  @UI: {  lineItem:       [ { position: 40 } ],
+          identification: [ { position: 40 }  ]}
+  DateOfBirth;
+
+  @UI: {  lineItem:       [ { position: 50 } ],
+          identification: [ { position: 50 } ] }
+  Active;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}
